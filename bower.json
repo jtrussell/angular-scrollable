@@ -1,0 +1,31 @@
+{
+  "name": "angular-scrollable",
+  "version": "0.1.0",
+  "authors": [
+    "jtrussell"
+  ],
+  "description": "Fancy pants scrolling for angular apps",
+  "keywords": [
+    "angular",
+    "scrollbar",
+    "perfect"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jtrussell/angular-scrollable",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "gruntfile",
+    "package.json",
+    "src"
+  ],
+  "dependencies": {
+    "angular": "~1.2.6",
+    "jquery": "~2.0.3",
+    "perfect-scrollbar": "~0.4.6",
+    "jquery-mousewheel": "~3.1.9"
+  }
+}
