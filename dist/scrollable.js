@@ -10,9 +10,13 @@
 
 angular.module('scrollable', []);
 
+/*global console */
 
-angular.module('scrollable').directive('scrollable', function() {
+angular.module('scrollable').directive('scrollable', [
+    'scrollableOptions', function(scrollableOptions) {
+
   'use strict';
+
   return {
     link: function(scope, element, attrs) {
       jQuery(function() {
@@ -27,8 +31,32 @@ angular.module('scrollable').directive('scrollable', function() {
 
         // Make it so
         var opts = attrs.scrollable ? scope.$eval(attrs.scrollable) : {};
+        opts = angular.extend(scrollableOptions.get(), opts);
+
+        console.log(opts);
+
         element.perfectScrollbar(opts);
       });
     }
+  };
+}]);
+
+
+angular.module('scrollable').provider('scrollableOptions', function() {
+  'use strict';
+
+  var options = {};
+
+  this.set = function(opts) {
+    angular.extend(options, opts);
+  };
+  
+  this.$get = function() {
+    var exports = {
+      get: function() {
+        return angular.copy(options);
+      }
+    };
+    return exports;
   };
 });
