@@ -1,5 +1,3 @@
-/*global console */
-
 angular.module('scrollable').directive('scrollable', [
     'scrollableOptions', function(scrollableOptions) {
 
@@ -20,8 +18,6 @@ angular.module('scrollable').directive('scrollable', [
         // Make it so
         var opts = attrs.scrollable ? scope.$eval(attrs.scrollable) : {};
         opts = angular.extend(scrollableOptions.get(), opts);
-
-        console.log(opts);
 
         element.perfectScrollbar(opts);
       });
