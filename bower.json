@@ -5,6 +5,9 @@
     "jtrussell"
   ],
   "description": "Fancy pants scrolling for angular apps",
+  "main": [
+    "dist/scrollable.js"
+  ],
   "keywords": [
     "angular",
     "scrollbar",
