@@ -19,26 +19,6 @@ angular.module('scrollable').directive('scrollable', [
         opts = angular.extend(scrollableOptions.get(), opts);
 
         /**
-         * Avoid some awkwardness when container dimentions change
-         *
-         * It's possible to lose sight of all elements using
-         * max-[height|width] and filtering the list of items.
-         *
-         * @todo How to better handle scrolling + filtering?
-         */
-        scope.$watch(function() {
-          return element.height();
-        }, function() {
-          element.scrollTop(0);
-        });
-
-        scope.$watch(function() {
-          return element.width();
-        }, function() {
-          element.scrollLeft(0);
-        });
-
-        /**
          * A bit of a hack, we need the underlying elements to have their
          * heights calculated first? Possibly related to:
          * @see https://github.com/noraesae/perfect-scrollbar/issues/65
@@ -49,6 +29,28 @@ angular.module('scrollable').directive('scrollable', [
          */
         $timeout(function() {
           element.perfectScrollbar(opts);
+
+          /**
+           * Avoid some awkwardness when container dimentions change
+           *
+           * It's possible to lose sight of all elements using
+           * max-[height|width] and filtering the list of items.
+           *
+           * @todo How to better handle scrolling + filtering?
+           */
+          scope.$watch(function() {
+            return element.height();
+          }, function() {
+            element.scrollTop(0);
+            element.perfectScrollbar('update');
+          });
+
+          scope.$watch(function() {
+            return element.width();
+          }, function() {
+            element.scrollLeft(0);
+            element.perfectScrollbar('update');
+          });
         });
       });
     }
