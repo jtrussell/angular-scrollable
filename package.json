@@ -1,6 +1,6 @@
 {
   "name": "angular-scrollable",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Fancy pants scrolling for angular apps",
   "main": "index.js",
   "directories": {
